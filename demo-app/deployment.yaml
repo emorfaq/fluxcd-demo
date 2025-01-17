@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: busybox-deployment
 spec:
-  replicas: 1  # Number of pods
+  replicas: 2  # Number of pods
   selector:
     matchLabels:
       app: busybox
