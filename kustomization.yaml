@@ -1,0 +1,14 @@
+kind: Kustomization
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+metadata:
+  name: demo-app
+  namespace: gitdemo # Namespace where Flux is installed
+spec:
+  interval: 1m0s  # Sync interval
+  path: ./demo-app # Path to the kustomization 
+  prune: true  # Remove resources not present in the manifest
+  sourceRef:
+    kind: GitRepository
+    name: fluxcd-demo-repo
+  targetNamespace: gitdemo
+  wait: true  # Wait for resources to become ready

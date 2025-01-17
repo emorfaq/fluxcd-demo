@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: fluxcd-demo-repo
+  namespace: gitdemo
+spec:
+  interval: 1m0s
+  url: https://github.com/emorfaq/fluxcd-demo.git
+  ref:
+    branch:  main
