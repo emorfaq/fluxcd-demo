@@ -1,18 +1,26 @@
-name: Docker Image CI
+name: Run ansible
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - main  # Run on pushes to the main branch
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - main  # Run on pull requests targeting the main branch
 
 jobs:
-
-  build:
-
-    runs-on: ubuntu-latest
+  run-ansible:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 4: Run the Ansible Playbook
+      - name: Run Ansible Playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'False'  # Avoid host key checking for testing
+        run: |
+          ansible-playbook -i  playbook.yaml
+
