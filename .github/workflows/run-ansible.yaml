@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-ansible:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: self-hosted  # Use the runner with label
 
     steps:
       # Step 1: Check out the repository
@@ -22,5 +22,9 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'  # Avoid host key checking for testing
         run: |
-          ansible-playbook -i  playbook.yaml
+          ansible-playbook -i inventory.yml ANSIBLE_LOG_PATH=./logfile.log playbook.yml
+
+     # Step 5: Post results (Optional)
+      - name: print Logs
+        run: cat ./logfile.log
 
