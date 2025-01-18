@@ -1,0 +1,19 @@
+---
+- name: Count Pods
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    namespace: "gitdemo"  # Namespace to search for pods
+    pattern: "busybox"    # Pattern to search for in pod names
+
+  tasks:
+    - name: Get all pods in the namespace and filter by pattern
+      shell: |
+        /usr/local/bin/oc get pods -n {{ namespace }} | grep {{ pattern }} | wc -l
+      register: pod_count
+      failed_when: pod_count.rc != 0
+
+    - name: Print the count of matching pods
+      debug:
+        msg: "Number of pods for '{{ pattern }}': {{ pod_count.stdout }}"
