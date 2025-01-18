@@ -19,7 +19,7 @@ jobs:
 
       - name: Delay execution
         run: |
-          echo "Delaying execution for 30 seconds..."
+          echo "Delaying execution for 120 seconds..."
           sleep 120 
 
       # Step 4: Run the Ansible Playbook
