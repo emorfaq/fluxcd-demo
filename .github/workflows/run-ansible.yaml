@@ -29,7 +29,4 @@ jobs:
         run: |
           ANSIBLE_LOG_PATH=./logfile.log ansible-playbook playbook.yaml
 
-     # Step 5: Post results (Optional)
-      - name: print Logs
-        run: cat ./logfile.log
 
