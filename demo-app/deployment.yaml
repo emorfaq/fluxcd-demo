@@ -24,30 +24,4 @@ spec:
           limits:
             cpu: "200m"
             memory: "256Mi"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: busybox-deployment
-spec:
-  replicas: 1  # Number of pods
-  selector:
-    matchLabels:
-      app: busybox
-  template:
-    metadata:
-      labels:
-        app: busybox
-    spec:
-      containers:
-      - name: busybox
-        image: busybox:latest  # Specify the desired version of BusyBox
-        command: ["sh", "-c", "echo Hello, Kubernetes! && sleep 3600"]
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "200m"
-            memory: "256Mi"
 
