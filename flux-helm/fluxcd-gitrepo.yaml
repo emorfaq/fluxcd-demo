@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: fluxcd-helm-repo
+  namespace: gitdemo
+spec:
+  interval: 1m0s
+  url: https://github.com/emorfaq/argocd-helm.git
+  ref:
+    branch:  master

@@ -1,0 +1,13 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: sample-server
+  namespace: gitdemo
+spec:
+  interval: 1m0s
+  chart:
+    spec:
+      chart: ./sample-server
+      sourceRef:
+        kind: GitRepository
+        name: fluxcd-helm-repo
