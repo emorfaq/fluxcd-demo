@@ -27,6 +27,6 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'  # Avoid host key checking for testing
         run: |
-          ANSIBLE_LOG_PATH=./logfile.log ansible-playbook playbook.yaml
+          ANSIBLE_LOG_PATH=./logfile.log ansible-playbook ./ansible/playbook.yaml
 
 
